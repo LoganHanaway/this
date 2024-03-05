@@ -67,19 +67,19 @@ const cat = {
     }
 };
 
-const blueDance = cat.dance;
-// first is value is what 'this' should be
-// blueDance('jitterbug')
-blueDance.call(cat, 'jitterbug')
+// const blueDance = cat.dance;
+// // first is value is what 'this' should be
+// // blueDance('jitterbug')
+// blueDance.call(cat, 'jitterbug')
 
-const dog = {
-    breed: 'Black Lab',
-    name: 'Elton'
-}
-cat.play.call(dog, 'bone', 'my cat')
-// this is now set to dog object
-// it is a one time thing and does not permanently change anything
-blueDance.call(dog, 'hip hop dance')
+// const dog = {
+//     breed: 'Black Lab',
+//     name: 'Elton'
+// }
+// cat.play.call(dog, 'bone', 'my cat')
+// // this is now set to dog object
+// // it is a one time thing and does not permanently change anything
+// blueDance.call(dog, 'hip hop dance')
 
 
 
@@ -116,9 +116,56 @@ const boundDance = bDance.bind(blue);
 
 const rocketDance = blue.dance.bind(rocket);
 
-const dog2 = {
+const dog = {
     name: 'Tyson',
     breed: 'Mini Ausie',
     dance: rocketDance
 };
 
+
+
+// start video 7
+// bind arguemnts
+// can pass in further args after the value of this which will be baked into the new function
+
+const blueDisco = blue.dance.bind(blue, 'disco');
+const playsWithSocks = blue.dance.bind(blue, 'left sock', 'right sock');
+
+// playsWithSocks();
+// playsWithSocks('dirty sock'); // can add new ones as the l/r socks are set above
+
+function applySalesTax(taxRate, price){
+    return price + price * taxRate;
+}
+
+// applySalesTax(0.0725, 19.99)
+
+const applyCATax = applySalesTax.bind(null, 0.0725)
+// null makes the value of 'this' not bound
+const applyTXTax = applySalesTax.bind(null, 0.0625)
+
+
+
+const bobsMembership = {
+    name: 'Bob',
+    total: 250
+};
+
+const jillsMembership = {
+    name: 'Jill',
+    total: 899
+}
+
+function collectMonthlyFee(fee){
+    const remaining = this.total - fee;
+    this.total = remaining;
+    return this.name + ' remaining balance:' + remaining;
+}
+
+const collectBobsFee = collectMonthlyFee.bind(bobsMembership, 5);
+// takes his balance remaining down by 5 each time because it is bound to collectBobsFee
+const collectJillsFee = collectMonthlyFee.bind(jillsMembership, 35);
+
+
+// start video 8
+// bindind callbacks
