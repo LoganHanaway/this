@@ -85,3 +85,40 @@ blueDance.call(dog, 'hip hop dance')
 
 // start video  6
 // bind
+
+const blue = {
+    name: 'blue',
+    breed: 'Scottish Fold',
+    dance: function(dance){
+        console.log('THIS IS:', this);
+        console.log(`Meow, I am ${this.name} and I like to ${dance}`);
+    },
+    play: function(...toys){
+        for(let toy of toys){
+            console.log(`${this.name} plays with ${toy}`);
+        }
+    }
+};
+
+
+// bind RETURNS a new permabound function, it does not execute it like call
+// gives you a version of the function we called bind on 
+// where the value of this has been changed, bound, permanently
+
+const rocket = {
+    name: 'Rocket',
+    breed: 'Himalayan'
+}
+
+const bDance = blue.dance;
+const boundDance = bDance.bind(blue);
+// boundDance('waltz');
+
+const rocketDance = blue.dance.bind(rocket);
+
+const dog2 = {
+    name: 'Tyson',
+    breed: 'Mini Ausie',
+    dance: rocketDance
+};
+
