@@ -88,3 +88,51 @@ function popUp(msg){
 btnA.addEventListener('click', popUp.bind(null, 'Button A Says Hi'));
 btnB.addEventListener('click', popUp.bind(null, 'Button B Says Hi'));
 btnC.addEventListener('click', popUp.bind(null, 'Button C Says Hi'));
+
+
+
+
+
+// start video 9
+// arrow functions and this
+// arrow functions cause this to behave differently
+
+const greeter = {
+	msg: 'I like chickenz',
+	sayHi: () => {
+		// console.log(this);
+		alert(this.msg);
+	},
+	// waitAndGreet: function(delay){
+	// 	console.log(this);
+	// 	setTimeout(function(){
+	// 		console.log(this);
+	// 		alert(this.msg);
+	// 	}, delay)
+	// }
+	// waitAndGreet: function(delay){
+	// 	console.log(this);
+	// 	let callback = function(){
+	// 		console.log(this);
+	// 		alert(this.msg);
+	// 	}
+	// 	setTimeout(callback.bind(this), delay);
+	// }
+	// waitAndGreet: function(delay){
+	// 	setTimeout(function(){
+	// 		alert(this.msg);
+	// 	}.bind(this), delay)
+	// }
+	waitAndGreet: function(delay){
+		setTimeout(() => {
+			alert(this.msg);
+		}, delay)
+	}
+};
+
+// greeter.sayHi() // returns undefinied but works fine if not an arrow function
+// arrow function do not make their own this
+// not recomended to use => as methods on objects
+
+// greeter.waitAndGreet(2000); 
+// notice the differnt results for 'this' when logged
