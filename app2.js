@@ -169,3 +169,5 @@ const collectJillsFee = collectMonthlyFee.bind(jillsMembership, 35);
 
 // start video 8
 // bindind callbacks
+
+// moved to bindingcallbacks.js
