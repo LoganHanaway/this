@@ -14,18 +14,35 @@ const cat = {
 
 // start video 3
 
-function whatIsThis(){
-    console.log("this =", this)
-}
+// function whatIsThis(){
+//     console.log("this =", this)
+// }
 
-const myObj = {
-    func: whatIsThis,
-    color: 'purple'
-};
+// const myObj = {
+//     func: whatIsThis,
+//     color: 'purple'
+// };
 
-myObj.func()
+// myObj.func()
 
 // 'this' will be set to whatever you have to the left of the dot 
 
-// start video 4
 
+// start video 4
+// strict mode
+
+class Cat{
+    constructor(name, breed){
+        this.name = name;
+        this.breed = breed;
+    }
+    dance(danceType){
+        console.log('THIS IS:', this);
+        console.log(`Meow, I am ${this.breed} and I like to ${danceType}`);
+    }
+}
+
+const rocket = new Cat('Rocket', 'Tabby');
+rocket.dance('tango');
+const rocketDance = rocket.dance;
+rocketDance('tango');
